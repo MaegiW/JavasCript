@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" id="my_el">
+
+
+
+    <script>   
+        let my_el = document.getElementById("my_el");
+        // console.log(my_el);
+
+        my_el.addEventListener("keydown",function(e){
+            console.log(e.target);
+        });
+
+        // function add(a, b, c){
+        //     console.log(a+d);
+
+        //     c("d");
+        // }
+
+        // add(1,2, function(e){
+        //     console.log(e)
+        // });
+
+    </script>
+</body>
+</html>

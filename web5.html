@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+*{
+  box-sizing: border-box;
+}
+div.parent_block{
+  border: 1px solid black;
+  display: flex;
+}
+div.left_block{
+  border: 1px solid red;
+  flex-basis: 100px;
+  flex-shrink: 0;
+}
+div.left_block a.link{
+  text-decoration: none;
+}
+div.left_block a.-on{
+  background-color: black;
+  color: white;
+}
+div.right_block{
+  border: 1px solid blue;
+  flex-grow: 1;
+  height: 300px;
+  overflow-y: auto;
+  
+  /* offsetTop 才會相對於這個元素 */
+  position: relative;
+}
+div.each_block{
+  border: 1px solid orange;
+  
+  height: 500px;
+  /* min-height: 100%; */
+  min-height: calc(100% + 2px);
+}
+</style>
+</head>
+
+
+<body>
+    <div class="parent_block">
+
+        <div class="left_block">
+          <ul class="list">
+            <li><a href="#" id="link1" class="link -on">一</a></li>
+            <li><a href="#" id="link2" class="link">二</a></li>
+            <li><a href="#" id="link3" class="link">三</a></li>
+          </ul>
+        </div>
+      
+        <div class="right_block" id="scroll_block">
+          <div class="each_block" data-id="link1">
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+              內容一<br>
+          </div>
+          <div class="each_block" data-id="link2">
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+              內容二<br>
+          </div>
+    
+          <div class="each_block" data-id="link3">
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+              內容三<br>
+          </div>
+        </div>
+      
+      </div>
+
+      <script>
+        let scroll_block = document.getElementById("scroll_block");
+        scroll_block.addEventListener("scroll", function(){
+            // console.log("sss")
+            let lef_link = this.closest("div.parent_block").querySelectorAll("a.link");
+            // console.log(lef_link);
+
+            for( let i =0 ; i < lef_link.length; i++){
+                lef_link[i].classList.remove("-on");
+            }
+
+            let orange_block = this.querySelectorAll("div.each_block");
+            // console.log(orange_block);
+           
+            let link;
+
+            // console.log (orange_block [0].offsetTop);
+            // console.log(this.scrollTop);
+            // console.log(orange_block[2]. offsetTop - this.scrollTop);
+
+            for(let i= 0; i < orange_block.length; i++ ){
+                let each_pos =  orange_block[i].offsetTop - this.scrollTop;
+                if(each_pos <= 0 && each_pos >= -orange_block[i].offsetHeight){
+                    // console.log(i);
+                    let link_id = orange_block[i].getAttribute("data-id")
+                        console.log(link_id);  
+                    link = document.getElementById(link_id);
+
+                }
+            }
+
+            link.classList.add("-on");
+
+        });
+
+        let leftlinks = document.querySelectorAll("a.link");
+        
+        for(let i = 0; i < leftlinks.length; i++){
+            leftlinks[i].addEventListener("click", function(e)  {
+                e.preventDefault();
+            let link_id = this.getAttribute("id");
+
+            // let block = document.querySelector("div.each_block[data-id=" + link_id +"]");
+            let block = document.querySelector(`div.each_block[data-id=${link_id}]`);
+
+            // scroll_block.scrollTop = block.offsetTop + 1;
+            scroll_block.scrollTo({
+                top : block.offsetTop + 1,
+                behavior: "smooth"
+            })
+
+            });
+
+        }
+
+
+      </script>
+</body>
+</html>

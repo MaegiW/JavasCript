@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>localstorage</h1>
+
+    <script>   
+        // localStorage.colorSetting1 = '第一種方式';
+        // localStorage['colorSetting2'] = '第二種方式';
+        // localStorage.setItem('colorSetting3', '第三種方式');
+
+
+        //JSON的格式 : 物件 ,陣列
+
+        let car = {
+            price: 100,
+            color: "white"
+        };
+
+        localStorage.setItem('mydata', JSON.stringify(car));
+        
+        // localStorage.setItem("My_date", JAON.stringify(car))
+        let car_data=JSON.parse(localStorage.getItem("mydata"));
+        console.log(car_data.price);
+
+
+    </script>
+
+
+</body>
+</html>

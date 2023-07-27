@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" method="get" id="my_form">
+        <input type="text" id="my_text">
+        <button type="sub bmit">資料送出</button>
+      </form>
+
+      <script>  
+      let my_form = document.getElementById("my_form");
+      my_form.addEventListener("submit", function(e){
+        e.preventDefault();
+        let my_text = document.getElementById("my_text");
+        console.log(my_text.value);
+
+        if(my_text.value == ""){
+
+            e.preventDefault()
+            alrert("請輸入資料")
+        }
+
+      });
+
+      let my_text2 = document.getElementById("my_text");
+        my_text2.addEventListener("keydown", function(e){
+            // e.preventDefault();
+        
+            // console.log(e.which);
+
+            if (e.which >= 46 &&e.which <=57 ||e.which){
+                
+            } eles{
+
+            }e.phrevenfaull()
+;        });
+
+
+        
+
+    </script>
+</body>
+</html>

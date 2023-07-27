@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="#" method="#">
+        <input type="text" id="item1" placeholder="單價" name="price">
+  
+        <input type="text" id="item2" placeholder="數量" name="count">
+  
+        <button type="button" id="btn">按鈕</button>
+    </form>
+  
+    <br>
+    <p>結果：<span id="result"></span></p>
+    
+
+    <script>
+        
+        var btn_el= document.getElementById("btn");
+        btn_el.addEventListener("click", function(){
+
+            let item1_el = document.getElementById("item1");
+            let item2_el = document.getElementById("item2");
+            
+            // consol.log(item2_el.value);
+
+            // let result = item1_el.value * item2_el.value;
+
+            // let result = parseInt(item1_el.value)  parseInt (item2_el.value);
+
+
+            // console.log(result);
+
+            let result_el = document.getElementById("result");
+            result_el.innerHTML = result;
+
+
+           
+
+        })
+
+        // console.log(btn_el)
+        
+        // var car = {
+        //     price:100, 
+        //     color:"red",
+        //     drive: function(){
+        //         console.log("drive");
+        //     }    
+        // };
+        // console.log(car);
+        // car.dive();
+
+    //     console.log(window);
+            // window.alert("tt")
+    // </script>
+</body>
+</html>

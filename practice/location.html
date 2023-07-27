@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <button type="button" id="btn1">重新整理網頁</button>
+    <button type="button" id="btn2">導向到其它網址</button>
+    <button type="button" id="btn3">觀察網址資訊</button>
+
+    <button type="button" id="btn4">取得網址參數資訊</button>
+
+    <form action="https://www.google.com/" method="get">
+        <div>
+            帳號:<input type="text" name="username">
+        </div>
+
+        <div>
+            密碼:<input type="text" name="password">
+        </div>
+        
+        <button type="submit">按鈕</button>
+    </form>
+
+    <script>
+
+      var btn1 = document.getElementById("btn1");
+      btn1.addEventListener("click", function(){
+        location.reload();
+      });
+
+      var btn2 = document.getElementById("btn2");
+      btn2.addEventListener("click", function(){
+        location.href = "https://tw.yahoo.com";
+      });
+
+      var btn3 = document.getElementById("btn3");
+      btn3.addEventListener("click", function(){
+        // 取得網址資訊
+        console.log(location);
+
+        console.log("href: " + location.href);
+        console.log("protocol: " + location.protocol);
+        console.log("hostname: " + location.hostname);
+        console.log("host: " + location.host);
+        console.log("port: " + location.port);
+        console.log("pathname: " + location.pathname);
+        console.log("search: " + location.search);
+        console.log("hash: " + location.hash);
+      });
+
+
+    var btn4 = document.getElementById("btn4");
+     tn4.addEventListener("click", function(){
+
+    var search_obj = new URLSearchParams(location.search);
+     console.log(search_obj.get("a")); // value1
+  
+});
+    </script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        ul.list{
+  border: 1px solid black;
+}
+
+ul.list > li{
+  border: 1px solid red;
+
+  
+  opacity: 1;
+  transition: opacity 1s;
+ 
+}
+
+ul.list > li.-remove{
+  opacity: 0;
+}
+
+
+ul.list > li::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+button.del{
+  float: right;
+}
+
+button[disabled].del{
+  background-color: black;
+  color: white;
+}
+
+    </style>
+</head>
+<body>
+    
+    <ul class="list">
+        <li>
+          <button type="button" class="del">刪除</button>
+          這是文字1
+        </li>
+        <li>
+          <button type="button" class="del">刪除</button>
+          這是文字2
+        </li>
+      </ul>
+
+
+      <script>
+        // let interval_id = setInterval(function(){
+        //     console.log("abc");
+
+        //     clearInterval(interval_id);
+        // },1000);
+
+
+        let btn_del = document.getElementsByClassName("del");
+        // console.log(btn_del);
+        for( let i = 0; i < btn_del.length; i++){
+            btn_del[i].addEventListener("click",function(){
+                // alert("aaa");
+                // console.log(this);//查看有沒有抓到
+                
+                // this.closest("li").remove();// 刪掉
+                // 寫法一:太麻煩
+                // this.disabled = true;      
+
+                // let closest_li = this.closest("li");
+                // closest_li.style.opacity = 1;
+
+                // let interval_id = setInterval(function(){
+
+                //     if (closest_li.style.opacity <= 0){
+                //         console.log("done");
+                //         clearInterval(interval_id);
+                //         closest_li.remove();
+                //     }else{ 
+                //         // closest_li.style.opacity = closest_li.style.opacity -0.1;
+                //         closest_li.style.opacity -=.1;
+                //     }
+
+                // },100)
+                
+                
+                
+                // 寫法二
+                this.disabled = true;
+                let closest_li = this.closest("li");
+                closest_li.classList.add("-remove");
+
+                setTimeout(function(){
+                    closest_li.remove();
+                },1000);
+
+          
+            });
+        }
+        
+       
+      </script>
+</body>
+</html>
